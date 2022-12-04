@@ -1,0 +1,53 @@
+<LOM-OBJECT>
+    <general>
+        <title> Exam 1, Physics of Motion </title>
+        <language> English </language>
+        <description> Exam regarding physics </description>
+        <keyword> Physics, Exam, Mechanic, Motion </keyword>
+        <coverage> College 101 Exam </coverage>
+        <structure> 4 problems and 4 questions </structure>
+    </general>
+    <lifecycle>
+        <version> 1.0.1 </version>
+        <status> active </status>
+        <contribute> Prof. Hanzo Hattori </contribute>
+        <role> Prof. </role>
+        <date> 12.10.1998. </date> 
+    </lifecycle>
+    <technical>
+        <format> Web page form </format>
+        <size> 100 </size>
+        <location> moodle-url </location>
+        <requirement> Moodle LTS platform </requirement>
+        <type> LTS web platform </type>
+        <name> Moodle </name>
+        <minVersion> 1.1 </minVersion>
+        <maxVersion> latest </maxVersion>
+        <installationRemarks> Follow the instructions on moodle.com </installationRemarks>
+        <datetime> 12.10.2022 </datetime>
+        <description> Moodle is an LTS used for bla bla </description>
+    </technical>
+    <educational>
+        <interactivity-type> active </interactivity-type>
+        <learning-resource-type> exam </learning-resource-type>
+        <interactivity-level> low </interactivity-level>
+        <semantic-density> medium </semantic-density>
+        <intended-user-role> learner </intended-user-role>
+        <context> higher education </context>
+        <age-range> 18 - 22 </age-range>
+        <difficulty> medium </difficulty>
+        <typical-learning-time> 15 hours of active learning on the premises, with an additional 10 hours of self study </typical-learning-time>
+        <description> A physics exam regarding mechanical motion </description>
+        <language> English </language>
+    </educational>
+    <rights>
+        <cost> Covered by student tuition </cost>
+        <copyright> Rights reserved by faculty </copyright>
+        <description> NA </description>
+    </rights>
+    <relation>
+        <kind> similar content </kind>
+        <resource> moodle-url for that similar content </resource>
+        <description> Exam 2 Physics of Optics </description>
+    </relation>
+</LOM-OBJECT>

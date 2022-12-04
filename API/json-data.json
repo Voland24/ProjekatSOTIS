@@ -1,0 +1,145 @@
+{
+    "LOM-OBJECT": {
+        "general": [
+            {
+                "title": [
+                    " Exam 1, Physics of Motion "
+                ],
+                "language": [
+                    " English "
+                ],
+                "description": [
+                    " Exam regarding physics "
+                ],
+                "keyword": [
+                    " Physics, Exam, Mechanic, Motion "
+                ],
+                "coverage": [
+                    " College 101 Exam "
+                ],
+                "structure": [
+                    " 4 problems and 4 questions "
+                ]
+            }
+        ],
+        "lifecycle": [
+            {
+                "version": [
+                    " 1.0.1 "
+                ],
+                "status": [
+                    " active "
+                ],
+                "contribute": [
+                    " Prof. Hanzo Hattori "
+                ],
+                "role": [
+                    " Prof. "
+                ],
+                "date": [
+                    " 12.10.1998. "
+                ]
+            }
+        ],
+        "technical": [
+            {
+                "format": [
+                    " Web page form "
+                ],
+                "size": [
+                    " 100 "
+                ],
+                "location": [
+                    " moodle-url "
+                ],
+                "requirement": [
+                    " Moodle LTS platform "
+                ],
+                "type": [
+                    " LTS web platform "
+                ],
+                "name": [
+                    " Moodle "
+                ],
+                "minVersion": [
+                    " 1.1 "
+                ],
+                "maxVersion": [
+                    " latest "
+                ],
+                "installationRemarks": [
+                    " Follow the instructions on moodle.com "
+                ],
+                "datetime": [
+                    " 12.10.2022 "
+                ],
+                "description": [
+                    " Moodle is an LTS used for bla bla "
+                ]
+            }
+        ],
+        "educational": [
+            {
+                "interactivity-type": [
+                    " active "
+                ],
+                "learning-resource-type": [
+                    " exam "
+                ],
+                "interactivity-level": [
+                    " low "
+                ],
+                "semantic-density": [
+                    " medium "
+                ],
+                "intended-user-role": [
+                    " learner "
+                ],
+                "context": [
+                    " higher education "
+                ],
+                "age-range": [
+                    " 18 - 22 "
+                ],
+                "difficulty": [
+                    " medium "
+                ],
+                "typical-learning-time": [
+                    " 15 hours of active learning on the premises, with an additional 10 hours of self study "
+                ],
+                "description": [
+                    " A physics exam regarding mechanical motion "
+                ],
+                "language": [
+                    " English "
+                ]
+            }
+        ],
+        "rights": [
+            {
+                "cost": [
+                    " Covered by student tuition "
+                ],
+                "copyright": [
+                    " Rights reserved by faculty "
+                ],
+                "description": [
+                    " NA "
+                ]
+            }
+        ],
+        "relation": [
+            {
+                "kind": [
+                    " similar content "
+                ],
+                "resource": [
+                    " moodle-url for that similar content "
+                ],
+                "description": [
+                    " Exam 2 Physics of Optics "
+                ]
+            }
+        ]
+    }
+}
