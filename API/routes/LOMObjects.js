@@ -3,15 +3,16 @@ const neo4jSession = require('../neo4jConnection');
 const router = express.Router()
 
 router.get("/", (req,res)=>{
-    neo4jSession.executeRead((tx)=>{
-        tx.run(`MATCH (a)-[rel]->(b) return a,rel,b`)
-          .then((result)=>{
-            res.status(200).send({payload:result});
-          })
-          .catch((err=>{
-            res.status(500).send({msg:'err'})
-          }));
-    });
+    res.status(200).send({msg:"Just checking"})
+    // neo4jSession.executeRead((tx)=>{
+    //     tx.run(`MATCH (a)-[rel]->(b) return a,rel,b`)
+    //       .then((result)=>{
+    //         res.status(200).send({payload:result});
+    //       })
+    //       .catch((err=>{
+    //         res.status(500).send({msg:'err'})
+    //       }));
+    // });
 });
 
 router.get("/getSpecificCategory/", (req,res)=>{

@@ -20,7 +20,7 @@ const PORT = process.env.PORT || 5000;
 app.listen(PORT, ()=>console.log('Server is running on PORT 5000....'))
 
 app.get('/', (req,res)=>{
-  res.status(200).send({msg : "Main page working"})
+  res.status(200).sendFile(__dirname + "/index.html")
 })
 
 const xml2js = require("xml2js");
