@@ -31,12 +31,15 @@ router.get("/getSpecificCategory/", (req,res)=>{
 });
 })
 
+//match (g:General) where g.title contains "Exam" return g
+
+//MATCH (a:LomObject)-[rel:GENERAL]->(b:General{title : "${title}"}) return b
 
 router.get("/searchByTitle/", (req,res)=>{
   var title = req.query.title;
   neo4jSession.
     executeRead((tx)=>{
-    tx.run(`MATCH (a:LomObject)-[rel:GENERAL]->(b:General{title : "${title}"}) return b`)
+    tx.run(`match (g:General) where g.title contains "${title}" return g`)
       .then((result)=>{
         res.status(200).send(result.records[0]._fields[0].properties);
       })
@@ -46,11 +49,12 @@ router.get("/searchByTitle/", (req,res)=>{
 })
 })
 
+//MATCH (g:General)<-[rel1:GENERAL]-(a:LomObject)-[rel:LIFECYCLE]->(b:Lifecycle{contribute : "${prof}"}) return g
 router.get("/searchByProfessor/", (req,res)=>{
   var prof = req.query.prof;
   neo4jSession.
     executeRead((tx)=>{
-    tx.run(`MATCH (g:General)<-[rel1:GENERAL]-(a:LomObject)-[rel:LIFECYCLE]->(b:Lifecycle{contribute : "${prof}"}) return g`)
+    tx.run(`MATCH (g:General)<-[rel1:GENERAL]-(a:LomObject)-[rel:LIFECYCLE]->(b:Lifecycle) where b.contribute contains "${prof}" return g`)
       .then((result)=>{
         res.status(200).send(result.records[0]._fields[0].properties);
       })
@@ -60,11 +64,13 @@ router.get("/searchByProfessor/", (req,res)=>{
 })
 })
 
+
+//MATCH (t:Technical)<-[rel1:TECHNICAL]-(a:LomObject)-[rel:GENERAL]->(g:General{title : "${title}"}) return t
 router.get("/getTechnicalDetails/", (req,res)=>{
   var title = req.query.title;
   neo4jSession.
     executeRead((tx)=>{
-    tx.run(`MATCH (t:Technical)<-[rel1:TECHNICAL]-(a:LomObject)-[rel:GENERAL]->(g:General{title : "${title}"}) return t`)
+    tx.run(`MATCH (t:Technical)<-[rel1:TECHNICAL]-(a:LomObject)-[rel:GENERAL]->(g:General) where g.title contains "${title}" return t`)
       .then((result)=>{
         res.status(200).send(result.records[0]._fields[0].properties);
       })
@@ -78,7 +84,7 @@ router.get("/getSimilarContent/", (req,res)=>{
   var title = req.query.title;
   neo4jSession.
     executeRead((tx)=>{
-    tx.run(`MATCH (g:General{title:"${title}"})<-[rel1:GENERAL]-(a:LomObject)-[rel:RELATION]->(r:Relation) return r`)
+    tx.run(`MATCH (g:General)<-[rel1:GENERAL]-(a:LomObject)-[rel:RELATION]->(r:Relation) where g.title contains "${title}" return r`)
       .then((result)=>{
         returnArray = []
         result.records.forEach(element => {
