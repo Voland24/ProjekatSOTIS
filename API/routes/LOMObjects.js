@@ -17,13 +17,13 @@ router.get("/", (req,res)=>{
 
 router.get("/getSpecificCategory/", (req,res)=>{
   var catName = req.query.category;
-  var id = 1
+  var id = req.query.id
   catName = catName.toUpperCase()
   neo4jSession.
     executeRead((tx)=>{
     tx.run(`MATCH (a:LomObject{id:"${id}"})-[rel:${catName}]->(b) return a,rel,b`)
       .then((result)=>{
-        res.status(200).send({payload:result});
+        res.status(200).send(result.records[0]._fields[2].properties);
       })
       .catch((err=>{
         res.status(500).send({msg: err})
@@ -80,11 +80,76 @@ router.get("/getSimilarContent/", (req,res)=>{
     executeRead((tx)=>{
     tx.run(`MATCH (g:General{title:"${title}"})<-[rel1:GENERAL]-(a:LomObject)-[rel:RELATION]->(r:Relation) return r`)
       .then((result)=>{
-        res.status(200).send(result.records[0]._fields[0].properties);
+        returnArray = []
+        result.records.forEach(element => {
+          returnArray.push(element._fields[0].properties)
+        });
+        res.status(200).send(returnArray);
       })
       .catch((err=>{
-        res.status(500).send({msg: err})
+        console.log(err)
+        res.status(500).send(err)
       }));
 })
 })
+
+router.get("/getByURI/", (req,res)=>{
+  var uri = req.query.uri
+  neo4jSession.
+    executeRead((tx)=>{
+    tx.run(`match (g:General)<-[rel:GENERAL]-(l:LomObject)-[rel2:TECHNICAL]->(t:Technical{location:"${uri}"}) return g`)
+      .then((result)=>{
+        returnArray = []
+        result.records.forEach(element => {
+          returnArray.push(element._fields[0].properties)
+        });
+        res.status(200).send(returnArray);
+      })
+      .catch((err=>{
+        console.log(err)
+        res.status(500).send(err)
+      }));
+})
+})
+
+
+router.get("/getByRequirement/", (req,res)=>{
+  var requirement = req.query.requirement
+  neo4jSession.
+    executeRead((tx)=>{
+    tx.run(`match (g:General)<-[rel:GENERAL]-(l:LomObject)-[rel2:TECHNICAL]->(t:Technical{requirement:"${requirement}"}) return g`)
+      .then((result)=>{
+        returnArray = []
+        result.records.forEach(element => {
+          returnArray.push(element._fields[0].properties)
+        });
+        res.status(200).send(returnArray);
+      })
+      .catch((err=>{
+        console.log(err)
+        res.status(500).send(err)
+      }));
+})
+})
+
+
+router.get("/getByKeywords/", (req,res)=>{
+  var keyword = req.query.keyword
+  neo4jSession.
+    executeRead((tx)=>{
+    tx.run(` match (g:General) with "${keyword}" as var, g.keyword as list, g as res where var in list return res`)
+      .then((result)=>{
+        retArr = []
+        result.records.forEach(elem=>{
+          retArr.push(elem._fields[0].properties)
+        })
+        res.status(200).send(retArr);
+      })
+      .catch((err=>{
+        console.log(err)
+        res.status(500).send(err)
+      }));
+})
+})
+
 module.exports = router;

@@ -1,0 +1,25 @@
+Ontologija je formalni opis znanja kao skup koncepata u
+nekom datom domenu i veza koje postoje između njih.
+Omogućava bolji pregled podataka i unosi semantiku u podatke.
+
+Prednosti korišćenja su:
+	- postoji automatsko rezonovanje o podacima
+	- omogućava lako povezivanje sa drugim ontologijama
+	  za bogatiju semantiku i bolje rezonovanje
+
+U konkretnom case study-u smatram da ontologija nije potrebna.
+Kada bi u pitanju bio veći, enterprise projekat, u kojem je baza znanja mnogo
+veća ili kada se radilo povezivanje svih nastavnih materijala širom Balkana npr.
+tj. između drugih sistema edukacije, ontologija bi se pokazala korisnom.
+
+Kada bi bilo potrebe za razmenjivanjem veće količine znanja tj. spajanjem nekoliko ontologija koje se koriste
+u edukaciji, ontologija za LOM bi bila itekako korisna. 
+https://www.researchgate.net/publication/325357912_Application_of_ontologies_in_higher_education_A_systematic_mapping_study
+
+U ovoj studiji vidimo primere nekoliko nastavnih ontologija i kada bi projekat na kojem radimo bio internacionalan,
+LOM ontologija bi imala smisla.
+
+Trenutno, za potrebe brze i efikasne pretrage relativno manjeg skupa podataka, par hiljada nastavnih materijala na smeru,
+ontologija bi bila skupa i sa marginalnim ako uopšte dodatnim benefitima zbog overhead koji se unosi.
+
+CALL n10s.onto.import.fetch("https://raw.githubusercontent.com/Voland24/ProjekatSOTIS/main/API/lom.ttl","Turtle");
