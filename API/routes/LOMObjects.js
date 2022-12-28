@@ -41,7 +41,11 @@ router.get("/searchByTitle/", (req,res)=>{
     executeRead((tx)=>{
     tx.run(`match (g:General) where g.title contains "${title}" return g`)
       .then((result)=>{
-        res.status(200).send(result.records[0]._fields[0].properties);
+        returnArray = []
+        result.records.forEach(element => {
+          returnArray.push(element._fields[0].properties)
+        });
+        res.status(200).send(returnArray);
       })
       .catch((err=>{
         res.status(500).send({msg: err})
@@ -56,7 +60,11 @@ router.get("/searchByProfessor/", (req,res)=>{
     executeRead((tx)=>{
     tx.run(`MATCH (g:General)<-[rel1:GENERAL]-(a:LomObject)-[rel:LIFECYCLE]->(b:Lifecycle) where b.contribute contains "${prof}" return g`)
       .then((result)=>{
-        res.status(200).send(result.records[0]._fields[0].properties);
+        returnArray = []
+        result.records.forEach(elem=>{
+          returnArray.push(elem._fields[0].properties)
+        })
+        res.status(200).send(returnArray);
       })
       .catch((err=>{
         res.status(500).send({msg: err})
@@ -72,7 +80,11 @@ router.get("/getTechnicalDetails/", (req,res)=>{
     executeRead((tx)=>{
     tx.run(`MATCH (t:Technical)<-[rel1:TECHNICAL]-(a:LomObject)-[rel:GENERAL]->(g:General) where g.title contains "${title}" return t`)
       .then((result)=>{
-        res.status(200).send(result.records[0]._fields[0].properties);
+        returnArray = []
+        result.records.forEach(element => {
+          returnArray.push(element._fields[0].properties)
+        });
+        res.status(200).send(returnArray);
       })
       .catch((err=>{
         res.status(500).send({msg: err})
