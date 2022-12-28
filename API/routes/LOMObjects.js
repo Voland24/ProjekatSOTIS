@@ -39,7 +39,7 @@ router.get("/searchByTitle/", (req,res)=>{
   var title = req.query.title;
   neo4jSession.
     executeRead((tx)=>{
-    tx.run(`return g`)
+    tx.run(`match (g:General) where g.title contains "${title}" return g`)
       .then((result)=>{
         returnArray = []
         result.records.forEach(element => {
